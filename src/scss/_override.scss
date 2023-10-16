@@ -1,0 +1,64 @@
+html {
+    .bg-success {
+        color: white !important;
+    }
+
+    .bg-primary {
+        color: $white !important;
+    }
+
+    .bg-secondary {
+        color: $white !important;
+    }
+
+    .bg-warning,.bg-error {
+        color: $white !important;
+    }
+}
+
+.border,
+.v-divider {
+    border-color: rgba(var(--v-border-color), 1) !important;
+}
+.avtar-border {
+    border: 2px solid rgb(var(--v-theme-surface)) !important;
+}
+.subtext{
+    font-size: $font-size-root;
+    line-height: 1.75rem;
+}
+.border-right {
+    border-right: 1px solid rgba(var(--v-border-color), 1) !important;
+}
+//
+main .page-wrapper {
+    padding-top: 0;
+}
+main .v-container {
+    padding-top: 0;
+}
+// table
+.v-table .v-table__wrapper > table {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    // border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    /* position: relative; */
+    }
+    // document.querySelector("body > div.v-overlay-container > div > div > div > div.v-card-text > div.v-table.v-table--has-top.v-table--has-bottom.v-theme--ORANGE_THEME.v-table--density-default.v-data-table.border.rounded-md > div.v-table__wrapper > table > thead > tr")
+    .v-table .v-table__wrapper > table > thead > tr > th {
+      /* background-color: rgba(14, 150, 247, 0.259); */
+      background-color: rgba(var(--v-border-color), 1)
+      /* position: sticky; */
+    }
+.v-table .v-table__wrapper > table >thead > tr > th > span {
+    color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    }
+    .v-table > .v-table__wrapper > table >tbody>tr:nth-child(even) {
+        background-color: rgba(241, 237, 237, 0.347);
+    }
+    .v-data-table > .v-data-table__wrapper > table > tbody > tr > td {
+      color: #000;
+    }
+    
