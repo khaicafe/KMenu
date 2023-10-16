@@ -1,0 +1,33 @@
+version: '3'
+
+tasks:
+  release:
+    vars:
+      DOCKER_IMAGE: hub.neomed.vn/neocafe/staffweb
+      VERSION:
+        sh: git tag -l --sort=-v:refname | head -n 1
+    cmds:
+      - yarn
+      - yarn prod
+      - docker build -t {{.DOCKER_IMAGE}}:{{.VERSION}} .
+      - docker push {{.DOCKER_IMAGE}}:{{.VERSION}}
+      - docker rmi {{.DOCKER_IMAGE}}:{{.VERSION}}
+
+  sandbox:
+    cmds:
+      - yarn sandbox
+      - task sync
+      - task startcontainer
+  sync:
+    cmds:
+      - rsync -aurv --delete dist neodev:/root/neocafe/staffweb
+  startcontainer:
+    cmds:
+      - ssh neodev 'cd /root/neocafe/ && docker-compose restart staffweb'
+
+  dockerlogin:
+    vars:
+      DOCKER_USERNAME: devops
+      DOCKER_PASSWORD: 123456@
+    cmds:
+      - docker login https://hub.neomed.vn -u {{.DOCKER_USERNAME}} -p {{.DOCKER_PASSWORD}}
